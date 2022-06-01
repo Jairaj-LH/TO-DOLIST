@@ -30,7 +30,7 @@ const secret = process.env.SECERET
 const MongoDbStore= require('connect-mongo')
 const { truncateSync } = require('fs')
 const { request } = require('http')
-const port=process.env.PORT||5000
+
 app.engine('ejs', ejsMate)
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')
@@ -176,6 +176,7 @@ app.delete('/todos/:id/lists', async(req, res) => {
 app.use('*', (req, res) => {
     res.redirect('/todos')
 })
-app.listen(3000, () => {
+const port=process.env.PORT||3000
+app.listen(port, () => {
     console.log('Listening to port 3000')
 })
