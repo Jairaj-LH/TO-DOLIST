@@ -26,7 +26,7 @@ db.on('error', console.error.bind(console, 'connection error!'))
 db.once("open", () => {
     console.log('Datbase connected')
 })
-const secret = process.env.secret||'thisissecret'
+const secret = process.env.SECRET||'thisissecret'
 const MongoDbStore= require('connect-mongo')
 const { truncateSync } = require('fs')
 const { request } = require('http')
