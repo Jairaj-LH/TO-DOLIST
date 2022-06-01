@@ -13,6 +13,7 @@ const Completed = require('./models/completed')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const passport = require('passport')
+const mongo_sanitize=require('express-mongo-sanitize')
 const user1 = require('./models/users')
 const localStrategy = require('passport-local')
 const { isLoggedin } = require('./middleware')
@@ -37,6 +38,7 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded())
 app.use(methodOverride('_method'))
+app.use(mongo_sanitize())
 const store=new MongoDbStore({
     mongoUrl:db_url,
     secret,
